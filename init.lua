@@ -160,7 +160,6 @@ vim.opt.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
-
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -275,7 +274,7 @@ require('lazy').setup({
       },
     },
   },
-
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -474,6 +473,7 @@ require('lazy').setup({
       { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
+  { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -747,7 +747,17 @@ require('lazy').setup({
       }
     end,
   },
-
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
+  },
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -1023,6 +1033,18 @@ require('lazy').setup({
     },
   },
 })
-
+vim.opt.termguicolors = true
+require('bufferline').setup {
+  options = {
+    offsets = {
+      {
+        filetype = 'NvimTree',
+        text = 'File Explorer',
+        highlight = 'Directory',
+        separator = true, -- use a "true" to enable the default, or set your own character
+      },
+    },
+  },
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
