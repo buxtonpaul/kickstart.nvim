@@ -36,3 +36,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+--
+-- Bufferline isn't really using tabs, it is buffers but it works nicer than setting it's mode to tab
+-- as that screws with the file explorer
+vim.keymap.set('n', '<Tab>', vim.cmd.BufferLineCycleNext, { desc = 'Cycle to next buffer tab' })
+vim.keymap.set('n', '<S-Tab>', vim.cmd.BufferLineCyclePrev, { desc = 'Cycle to previous buffer tab' })
