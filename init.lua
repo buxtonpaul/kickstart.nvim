@@ -43,7 +43,7 @@ require('bufferline').setup {
     },
   },
 }
-
+require('overseer').setup()
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle File [e]xplorer' })
 vim.cmd.colorscheme 'catppuccin'
 -- The line beneath this is called `modeline`. See `:help modeline`
