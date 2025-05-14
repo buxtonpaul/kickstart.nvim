@@ -811,4 +811,8 @@ return {
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+  {
+    'stevearc/resession.nvim',
+    opts = {},
+  },
 }
