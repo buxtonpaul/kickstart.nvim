@@ -43,7 +43,9 @@ require('bufferline').setup {
     },
   },
 }
-require('overseer').setup()
+require('overseer').setup {
+  strategy = 'toggleterm',
+}
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle File [e]xplorer' })
 vim.cmd.colorscheme 'catppuccin'
 
