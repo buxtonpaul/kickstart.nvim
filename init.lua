@@ -86,7 +86,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { 'filename' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'overseer', 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
   },
@@ -101,7 +101,7 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {},
+  extensions = { 'overseer' },
 }
 
 -- Setup autocommands, possibly this should be moved to another file and get included....
