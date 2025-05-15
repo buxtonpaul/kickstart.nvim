@@ -126,5 +126,10 @@ vim.api.nvim_create_autocmd('StdinReadPre', {
     vim.g.using_stdin = true
   end,
 })
+require('toggleterm').setup {
+  direction = 'float',
+  open_mapping = [[<c-\>]],
+  terminal_mappings = true,
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
