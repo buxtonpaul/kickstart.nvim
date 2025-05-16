@@ -41,3 +41,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- as that screws with the file explorer
 vim.keymap.set('n', '<Tab>', vim.cmd.BufferLineCycleNext, { desc = 'Cycle to next buffer tab' })
 vim.keymap.set('n', '<S-Tab>', vim.cmd.BufferLineCyclePrev, { desc = 'Cycle to previous buffer tab' })
+vim.keymap.set('n', '<leader>tr', vim.cmd.OverseerRun, { desc = 'Run a Task with Overseer' })
+vim.keymap.set('n', '<leader>tq', vim.cmd.copen, { desc = 'Open the quickfix list' })
+vim.keymap.set('n', '<M-j>', vim.cmd.cnext, { desc = 'Cycle to next item on  Quicklist' })
+vim.keymap.set('n', '<M-k>', vim.cmd.cprev, { desc = 'Cycle to previous item on  Quicklist' })
+vim.keymap.set('n', '<leader>to', vim.cmd.OverseerToggle, { desc = 'Toggle the Overseer Window' })

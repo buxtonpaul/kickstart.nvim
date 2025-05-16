@@ -133,5 +133,88 @@ require('toggleterm').setup {
   open_mapping = [[<c-\>]],
   terminal_mappings = true,
 }
+
+--require('quicker').setup()
+vim.keymap.set('n', '<leader>q', function()
+  require('quicker').toggle()
+end, {
+  desc = 'Toggle quickfix',
+})
+vim.keymap.set('n', '<leader>l', function()
+  require('quicker').toggle { loclist = true }
+end, {
+  desc = 'Toggle loclist',
+})
+require('quicker').setup {
+  keys = {
+    {
+      '>',
+      function()
+        require('quicker').expand { before = 2, after = 2, add_to_existing = true }
+      end,
+      desc = 'Expand quickfix context',
+    },
+    {
+      '<',
+      function()
+        require('quicker').collapse()
+      end,
+      desc = 'Collapse quickfix context',
+    },
+  },
+}
+local harpoon = require 'harpoon'
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+-- basic telescope configuration
+local conf = require('telescope.config').values
+local function toggle_telescope(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  require('telescope.pickers')
+    .new({}, {
+      prompt_title = 'Harpoon',
+      finder = require('telescope.finders').new_table {
+        results = file_paths,
+      },
+      previewer = conf.file_previewer {},
+      sorter = conf.generic_sorter {},
+    })
+    :find()
+end
+
+vim.keymap.set('n', '<leader>ta', function()
+  harpoon:list():add()
+end, { desc = 'Add buffer to Harpoon list' })
+vim.keymap.set('n', '<C-e>', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = 'Open Harpoon List' })
+
+vim.keymap.set('n', '<C-1>', function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set('n', '<C-2>', function()
+  harpoon:list():select(2)
+end)
+vim.keymap.set('n', '<C-3>', function()
+  harpoon:list():select(3)
+end)
+vim.keymap.set('n', '<C-4>', function()
+  harpoon:list():select(4)
+end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set('n', '<leader>tp', function()
+  harpoon:list():prev()
+end, { desc = 'Select Next item in buffer list' })
+vim.keymap.set('n', '<leader>tn', function()
+  harpoon:list():next()
+end, { desc = 'Select Previous item in buffer list' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
