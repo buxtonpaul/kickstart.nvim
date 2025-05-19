@@ -57,6 +57,9 @@ require('resession').setup {
     interval = 60,
     notify = true,
   },
+  extensions = {
+    overseer = {},
+  },
 }
 -- Resession does NOTHING automagically, so we have to set up some keymaps
 -- vim.keymap.set("n", "<leader>ss", resession.save)
