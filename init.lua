@@ -49,7 +49,7 @@ require('overseer').setup {
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle File [e]xplorer' })
 vim.cmd.colorscheme 'vscode'
 
--- start ressession
+--start ressession
 local resession = require 'resession'
 require('resession').setup {
   autosave = {
@@ -109,7 +109,7 @@ require('lualine').setup {
   extensions = { 'overseer' },
 }
 
--- Setup autocommands, possibly this should be moved to another file and get included....
+--Setup autocommands, possibly this should be moved to another file and get included....
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     -- Only load the session if nvim was started with no args and without reading from stdin
@@ -131,6 +131,7 @@ vim.api.nvim_create_autocmd('StdinReadPre', {
     vim.g.using_stdin = true
   end,
 })
+
 require('toggleterm').setup {
   direction = 'float',
   open_mapping = [[<c-\>]],

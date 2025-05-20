@@ -34,21 +34,21 @@ return {
       desc = 'Debug: Start/Continue',
     },
     {
-      '<F1>',
+      '<F11>',
       function()
         require('dap').step_into()
       end,
       desc = 'Debug: Step Into',
     },
     {
-      '<F2>',
+      '<F10>',
       function()
         require('dap').step_over()
       end,
       desc = 'Debug: Step Over',
     },
     {
-      '<F3>',
+      '<F12>',
       function()
         require('dap').step_out()
       end,
@@ -60,6 +60,13 @@ return {
         require('dap').toggle_breakpoint()
       end,
       desc = 'Debug: Toggle Breakpoint',
+    },
+    {
+      '<F9>',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
     },
     {
       '<leader>B',
@@ -94,7 +101,7 @@ return {
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
+        --  'delve',
         'cppdbg',
       },
     }
