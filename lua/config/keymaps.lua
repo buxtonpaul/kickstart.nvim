@@ -5,9 +5,6 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -37,12 +34,19 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 --
--- Bufferline isn't really using tabs, it is buffers but it works nicer than setting it's mode to tab
--- as that screws with the file explorer
-vim.keymap.set('n', '<Tab>', vim.cmd.BufferLineCycleNext, { desc = 'Cycle to next buffer tab' })
-vim.keymap.set('n', '<S-Tab>', vim.cmd.BufferLineCyclePrev, { desc = 'Cycle to previous buffer tab' })
 vim.keymap.set('n', '<leader>tr', vim.cmd.OverseerRun, { desc = 'Run a Task with Overseer' })
-vim.keymap.set('n', '<leader>tq', vim.cmd.copen, { desc = 'Open the quickfix list' })
-vim.keymap.set('n', '<M-j>', vim.cmd.cnext, { desc = 'Cycle to next item on  Quicklist' })
-vim.keymap.set('n', '<M-k>', vim.cmd.cprev, { desc = 'Cycle to previous item on  Quicklist' })
-vim.keymap.set('n', '<leader>to', vim.cmd.OverseerToggle, { desc = 'Toggle the Overseer Window' })
+
+-- Toggle windows
+vim.keymap.set('n', '<leader>o', vim.cmd.OverseerToggle, { desc = 'Toggle the Overseer Window' })
+
+vim.keymap.set('n', '<leader>q', function()
+  require('quicker').toggle()
+end, {
+  desc = 'Toggle quickfix',
+})
+vim.keymap.set('n', '<leader>l', function()
+  require('quicker').toggle { loclist = true }
+end, {
+  desc = 'Toggle loclist',
+})
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle File [e]xplorer' })

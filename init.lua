@@ -46,7 +46,6 @@ require('bufferline').setup {
 require('overseer').setup {
   strategy = 'toggleterm',
 }
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle File [e]xplorer' })
 vim.cmd.colorscheme 'vscode'
 
 --start ressession
@@ -138,17 +137,6 @@ require('toggleterm').setup {
   terminal_mappings = true,
 }
 
---require('quicker').setup()
-vim.keymap.set('n', '<leader>q', function()
-  require('quicker').toggle()
-end, {
-  desc = 'Toggle quickfix',
-})
-vim.keymap.set('n', '<leader>l', function()
-  require('quicker').toggle { loclist = true }
-end, {
-  desc = 'Toggle loclist',
-})
 require('quicker').setup {
   keys = {
     {
@@ -195,7 +183,7 @@ end
 vim.keymap.set('n', '<leader>ta', function()
   harpoon:list():add()
 end, { desc = 'Add buffer to Harpoon list' })
-vim.keymap.set('n', '<C-e>', function()
+vim.keymap.set('n', '<leader>p', function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = 'Open Harpoon List' })
 
@@ -213,10 +201,10 @@ vim.keymap.set('n', '<C-4>', function()
 end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<leader>tp', function()
+vim.keymap.set('n', '[h', function()
   harpoon:list():prev()
 end, { desc = 'Select Next item in buffer list' })
-vim.keymap.set('n', '<leader>tn', function()
+vim.keymap.set('n', ']h', function()
   harpoon:list():next()
 end, { desc = 'Select Previous item in buffer list' })
 
